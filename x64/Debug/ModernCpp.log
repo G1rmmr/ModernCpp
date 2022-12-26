@@ -1,0 +1,57 @@
+﻿  main.cpp
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(89,44): error C2662: 'Node<Data> *Node<Data>::GetRearPointer(void)': 'this' 포인터를 'const Node<Data>'에서 'Node<Data> &'(으)로 변환할 수 없습니다.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(89,33): message : 변환하면서 한정자가 손실됩니다.
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(42,9): message : 'Node<Data>::GetRearPointer' 선언을 참조하십시오.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(89,44): message : 인수 목록 '()'을(를) 일치시키는 동안
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(88,1): message : 클래스 템플릿 멤버 함수 'void DoublyLinkedList<std::string>::RemoveRoot(void) const'을(를) 컴파일하는 중입니다.
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\main.cpp(33,27): message : 컴파일되는 함수 템플릿 인스턴스화 'void DoublyLinkedList<std::string>::RemoveRoot(void) const'에 대한 참조를 확인하세요.
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\main.cpp(20,33): message : 컴파일되는 클래스 템플릿 인스턴스화 'DoublyLinkedList<std::string>'에 대한 참조를 확인하세요.
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(94,45): error C2662: 'Node<Data> *Node<Data>::GetFrontPointer(void)': 'this' 포인터를 'const Node<Data>'에서 'Node<Data> &'(으)로 변환할 수 없습니다.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(94,34): message : 변환하면서 한정자가 손실됩니다.
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(41,9): message : 'Node<Data>::GetFrontPointer' 선언을 참조하십시오.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(94,45): message : 인수 목록 '()'을(를) 일치시키는 동안
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(95,44): error C2662: 'Node<Data> *Node<Data>::GetRearPointer(void)': 'this' 포인터를 'const Node<Data>'에서 'Node<Data> &'(으)로 변환할 수 없습니다.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(95,33): message : 변환하면서 한정자가 손실됩니다.
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(42,9): message : 'Node<Data>::GetRearPointer' 선언을 참조하십시오.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(95,44): message : 인수 목록 '()'을(를) 일치시키는 동안
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(101,9): error C2678: 이항 '=': 왼쪽 피연산자로 'const Node<Data>' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(43,1): message : 'Node<Data> &Node<Data>::operator =(const Node<Data> &)'일 수 있습니다.
+          with
+          [
+              Data=std::string
+          ]
+C:\Users\G1\source\repos\ModernCpp\ModernCpp\DoublyLinkedList.h(101,9): message : 인수 목록 '(const Node<Data>, Node<Data>)'을(를) 일치시키는 동안
+          with
+          [
+              Data=std::string
+          ]
+  stdafx.cpp
+  코드를 생성하고 있습니다...
