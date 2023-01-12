@@ -1,105 +1,110 @@
 #pragma once
 
-#ifndef DOUBLYLINKEDLIST_H
-#define DOUBLYLINKEDLIST_H
-
-#include "stdafx.h"
-
-template <typename Data>
-class Node {
-private:
-  Data data;
-  Node* left_link;
-  Node* right_link;
-
-public:
-  Node() {}
-
-  Node(const Data input) : data(input),
-    left_link(nullptr), right_link(nullptr) {}
-
-  Node(const Data input, const Node* front, const Node* rear) :
-    data(input), left_link(front), right_link(rear) {}
-
-  ~Node(){
-    std::cout << "Node is deleted" << std::endl;
-  }
-
-  void SetData(const Data input) {
-    this->data = input;
-  }
-
-  void SetFront(const Node* front_link) {
-    this->left_link = front_link;
-  }
-
-  void SetRear(const Node* rear_link) {
-    this->right_link = rear_link;
-  }
-
-  Data GetData() const { return data; }
-  Node* GetFrontPointer() { return left_link; }
-  Node* GetRearPointer() { return right_link; }
-};
-
-template <typename Data>
+template <typename T>
 class DoublyLinkedList {
 private:
-  Node<Data> root_node;
+  Node<T>* head;
+  Node<T>* tail;
+  size_t size;
 
 public:
-  DoublyLinkedList() {
-    this->root_node.SetData(NULL);
+  DoublyLinkedList() : size(0) {
+    head = new Node<T>(0, nullptr, nullptr);
+    tail = new Node<T>(0, nullptr, nullptr);
+
+    head->SetNext(tail);
+    tail->SetPrev(head);
   }
 
   ~DoublyLinkedList(){
+    while (head->GetNext() != tail) {
+      RemoveFront();
+    }
+    delete head, tail;
     std::cout << "List is deleted" << std::endl;
   }
 
-  void ListStatus() {
-    Node<Data> node;
-    node = *root_node.GetRearPointer();
+  const size_t GetSize() {
+    return size;
+  }
 
+  const bool IsEmpty() {
+    if (GetSize() == 0) {
+      std::cout << std::endl;
+      std::cout << "*****LIST IS EMPTY*****" << std::endl;
+
+      return true;
+    }
+    return false;
+  }
+
+  void ListStatus() {
     std::cout << std::endl;
 
-    while (node != root_node) {
-      std::cout << "<< [" << node.GetData() << "] >>";
-      node = *node.GetRearPointer();
+    for (Node<T>* node = head->GetNext(); node != nullptr;
+      node = node->GetNext()) {
+      std::cout << "<<[" << node->GetData() << "]>>";
     }
     std::cout << std::endl;
   }
 
-  void InsertNode(Data input_data) {
-    Node<Data> node(input_data);
+  void InsertFront(T data) {
+    Node<T>* node = new Node<T>(data, nullptr, nullptr);
+    Node<T>* prev = head;
+    Node<T>* next = head->GetNext();
+    
+    next->SetPrev(node);
+    prev->SetNext(node);
 
-    if (root_node.GetData() == NULL) {
-      this->root_node = node;
-      this->root_node.SetFront(&node);
-      this->root_node.SetRear(&node);
+    node->SetNext(next);
+    node->SetPrev(prev);
 
+    size++;
+  }
+
+  void InsertRear(T data) {
+    Node<T>* node = new Node<T>(data, nullptr, nullptr);
+    Node<T>* prev = tail->GetPrev();
+    Node<T>* next = tail;
+
+    next->SetPrev(node);
+    prev->SetNext(node);
+
+    node->SetNext(next);
+    node->SetPrev(prev);
+
+    size++;
+  }
+
+  void RemoveFront() {
+    if (IsEmpty()) {
+      std::cout << "No more nodes can be removed." << std::endl;
       return;
     }
     
-    node.SetFront(&root_node);
-    root_node.SetRear(&node);
-    this->root_node = node;
+    Node<T>* node = head->GetNext();
+    Node<T>* next = node->GetNext();
+
+    head->SetNext(next);
+    next->SetPrev(head);
+
+    size--;
+    node->~Node();
   }
 
-  void RemoveRoot() const {
-    if (this->root_node == *this->root_node.GetRearPointer()) {
-      std::cout << std::endl << "*****!! LIST EMPTY ERROR !!*****" <<
-        std::endl;
+  void RemoveRear() {
+    if (IsEmpty()) {
+      std::cout << "No more nodes can be removed." << std::endl;
+      return;
     }
-    
-    Node<Data> front_node = *this->root_node.GetFrontPointer();
-    Node<Data> rear_node = *this->root_node.GetRearPointer();
 
-    front_node.SetRear(&rear_node);
-    rear_node.SetFront(&front_node);
+    Node<T>* node = tail->GetPrev();
+    Node<T>* prev = node->GetPrev();
 
-    this->root_node.~Node();
-    this->root_node = front_node;
+    prev->SetNext(tail);
+    tail->SetPrev(prev);
+
+    size--;
+    node->~Node();
   }
 };
-
-#endif // !DOUBLYLINKEDLIST_H

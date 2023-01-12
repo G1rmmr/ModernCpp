@@ -4,4 +4,5 @@
 #include <algorithm>
 #include <string>
 
+#include "Node.h"
 #include "DoublyLinkedList.h"
