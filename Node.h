@@ -1,3 +1,6 @@
+
+// Copyright 2023 Nam-Jiwon
+
 #pragma once
 
 template <typename T>

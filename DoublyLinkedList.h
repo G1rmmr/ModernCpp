@@ -1,4 +1,9 @@
+
+// Copyright 2023 Nam-Jiwon
+
 #pragma once
+
+const short kInitialSize = 0;
 
 template <typename T>
 class DoublyLinkedList {
@@ -8,9 +13,9 @@ private:
   size_t size;
 
 public:
-  DoublyLinkedList() : size(0) {
-    head = new Node<T>(0, nullptr, nullptr);
-    tail = new Node<T>(0, nullptr, nullptr);
+  DoublyLinkedList() : size(kInitialSize) {
+    head = new Node<T>(NULL, nullptr, nullptr);
+    tail = new Node<T>(NULL, nullptr, nullptr);
 
     head->SetNext(tail);
     tail->SetPrev(head);
@@ -29,7 +34,7 @@ public:
   }
 
   const bool IsEmpty() {
-    if (GetSize() == 0) {
+    if (GetSize() == kInitialSize) {
       std::cout << std::endl;
       std::cout << "*****LIST IS EMPTY*****" << std::endl;
 
@@ -39,11 +44,11 @@ public:
   }
 
   void ListStatus() {
-    std::cout << std::endl;
+    std::cout << std::endl << "Now State : ";
 
     for (Node<T>* node = head->GetNext(); node != nullptr;
       node = node->GetNext()) {
-      std::cout << "<<[" << node->GetData() << "]>>";
+      std::cout << "< " << node->GetData() << " >";
     }
     std::cout << std::endl;
   }
